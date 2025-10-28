@@ -136,6 +136,20 @@ project/
 - ブログ・お知らせ機能
 - オンライン相談予約フォーム
 
+## GitHub Pagesでの公開方法
+
+詳細な手順は **`GITHUB-PAGES-SETUP.md`** を参照してください。
+
+### 簡易手順
+1. GitHubにリポジトリ作成（`exp-tachikawa-lp`）
+2. 画像2枚をダウンロード（EXPロゴ、支援員写真）
+3. imagesフォルダに画像を配置
+4. すべてのファイルをGitHubにアップロード
+5. Settings → Pages → Source: main → Save
+6. 公開URL取得
+
+**重要**: index.htmlは既に画像パスを`images/`フォルダに修正済みです。
+
 ## 更新履歴
 
 - 2025-10-28: 初版作成
@@ -144,3 +158,4 @@ project/
   - レスポンシブデザイン完成
   - 全8セクション実装
   - 修正後の正確な情報反映（USP3項目、兵働支援員情報、心理面談は希望制）
+  - GitHub Pages用に画像パスを修正
