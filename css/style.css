@@ -83,15 +83,19 @@ body {
 }
 
 .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     padding: var(--spacing-sm) 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 0 200px !important;
 }
 
 .logo-img {
@@ -114,6 +118,12 @@ body {
     width: auto !important;
     max-width: 200px !important;
     object-fit: contain !important;
+}
+
+.nav {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
 }
 
 .nav-list {
@@ -169,6 +179,8 @@ body {
     cursor: pointer;
     padding: var(--spacing-xs);
     z-index: 1001;
+    flex: 0 0 50px;
+    justify-content: flex-end;
 }
 
 .hamburger span {
@@ -1647,10 +1659,11 @@ a:focus::after {
 }
 
 .guidebook-covers {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-md);
-    max-width: 750px;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 900px;
     margin: 0 auto;
     margin-bottom: var(--spacing-lg);
 }
@@ -1659,12 +1672,14 @@ a:focus::after {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .guidebook-cover {
     position: relative;
     width: 100%;
-    max-width: 150px;
+    max-width: 100%;
     aspect-ratio: 210 / 297; /* A4縦比率 */
     border-radius: 8px;
     overflow: hidden;
@@ -1834,6 +1849,12 @@ a:focus::after {
 }
 
 /* レスポンシブ対応：ガイドブックプレビュー */
+@media (min-width: 769px) {
+    .guidebook-covers {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
 @media (max-width: 768px) {
     .guidebook-preview {
         padding: var(--spacing-md);
@@ -1844,7 +1865,7 @@ a:focus::after {
     }
     
     .guidebook-covers {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: var(--spacing-sm);
     }
     
