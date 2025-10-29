@@ -187,7 +187,58 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // ヘッダーの初期状態
     handleHeaderScroll();
+    
+    // 画像の遅延読み込み
+    if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+            img.src = img.dataset.src || img.src;
+        });
+    } else {
+        // Intersection Observerで遅延読み込みをフォールバック
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
+    }
+    
+    // スムーズスクロールのための現在位置追跡
+    updateActiveNavLink();
 });
+
+// ==========================================
+// ナビゲーションリンクのアクティブ状態管理
+// ==========================================
+const updateActiveNavLink = () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+};
 
 // ==========================================
 // 外部リンクに rel 属性を追加（セキュリティ対策）

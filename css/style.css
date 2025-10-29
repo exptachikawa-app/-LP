@@ -95,13 +95,25 @@ body {
 }
 
 .logo-img {
-    height: 50px;
-    width: auto;
+    height: 50px !important;
+    width: auto !important;
+    max-width: 200px !important;
+    object-fit: contain !important;
     transition: transform 0.3s ease;
+    display: block !important;
 }
 
 .logo-img:hover {
     transform: scale(1.05);
+}
+
+/* ロゴの伸び防止（追加の強制） */
+.logo img,
+.logo a img {
+    height: 50px !important;
+    width: auto !important;
+    max-width: 200px !important;
+    object-fit: contain !important;
 }
 
 .nav-list {
@@ -126,6 +138,12 @@ body {
     transform: translateY(-2px);
 }
 
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.4);
+    font-weight: 700;
+    border-bottom: 3px solid var(--accent-color);
+}
+
 .nav-link-cta {
     background-color: var(--accent-color);
     color: var(--bg-white);
@@ -135,6 +153,11 @@ body {
 .nav-link-cta:hover {
     background-color: #E65100;
     transform: translateY(-2px);
+}
+
+.nav-link-cta.active {
+    background-color: #E65100;
+    border-bottom: none;
 }
 
 .hamburger {
@@ -365,16 +388,60 @@ body {
     .hero {
         margin-top: 70px;
         min-height: 90vh;
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.4;
     }
     
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: var(--spacing-sm);
     }
     
     .btn {
         width: 100%;
         max-width: 300px;
+        font-size: 1rem;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+}
+
+/* タブレット対応 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .strengths-grid,
+    .recommend-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 大画面対応 */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .section-title {
+        font-size: 3.5rem;
     }
 }
 
@@ -538,12 +605,14 @@ body {
 .strength-icon {
     font-size: 3rem;
     margin-bottom: var(--spacing-sm);
+    display: none; /* アイコンを非表示 */
 }
 
 .strength-title {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-sm);
     color: var(--text-color);
 }
 
@@ -1105,6 +1174,14 @@ body {
     padding: var(--spacing-md);
     border-radius: 12px;
     box-shadow: 0 2px 10px var(--shadow-light);
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.contact-item:hover {
+    box-shadow: 0 4px 20px var(--shadow-medium);
+    border-left-color: var(--primary-color);
+    transform: translateX(5px);
 }
 
 .contact-icon {
@@ -1146,6 +1223,14 @@ body {
     border-radius: 16px;
     text-align: center;
     margin-top: var(--spacing-md);
+    border: 2px solid rgba(255, 237, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.contact-cta:hover {
+    background: linear-gradient(135deg, rgba(255, 237, 0, 0.3) 0%, rgba(255, 167, 38, 0.3) 100%);
+    border-color: var(--primary-color);
+    transform: scale(1.02);
 }
 
 .contact-cta-text {
@@ -1179,9 +1264,32 @@ body {
    フッター
 ========================================== */
 .footer {
-    background: linear-gradient(135deg, #333333 0%, #222222 100%);
+    background: linear-gradient(135deg, #4A3428 0%, #6B4423 30%, #8B5A2B 70%, #6B4423 100%);
     color: var(--bg-white);
     padding: var(--spacing-xl) 0 var(--spacing-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--primary-color) 100%);
+}
+
+.footer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(255, 237, 0, 0.05) 100%);
+    pointer-events: none;
 }
 
 .footer-content {
@@ -1195,11 +1303,31 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+    max-width: 200px;
 }
 
 .footer-logo-img {
-    height: 50px;
-    width: auto;
+    height: auto !important;
+    width: 100% !important;
+    max-width: 180px !important;
+    max-height: 50px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+    transition: transform 0.3s ease;
+    display: block !important;
+}
+
+.footer-logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* フッターロゴの伸び防止（追加の強制） */
+.footer img {
+    height: auto !important;
+    width: auto !important;
+    max-height: 50px !important;
+    max-width: 180px !important;
+    object-fit: contain !important;
 }
 
 .footer-name {
@@ -1222,7 +1350,7 @@ body {
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
-    color: var(--primary-color);
+    color: #FFE082;
 }
 
 .footer-link-list {
@@ -1234,13 +1362,13 @@ body {
 }
 
 .footer-link-list a {
-    color: #CCCCCC;
+    color: #E0E0E0;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-link-list a:hover {
-    color: var(--primary-color);
+    color: #FFE082;
 }
 
 .footer-bottom {
@@ -1250,7 +1378,7 @@ body {
 }
 
 .footer-copyright {
-    color: #999999;
+    color: #C0C0C0;
     font-size: 0.9rem;
 }
 
@@ -1315,4 +1443,187 @@ body {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ==========================================
+   UI/UX改善：追加スタイル
+========================================== */
+
+/* スムーズなフォーカススタイル */
+a:focus, button:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 改善されたホバーエフェクト */
+.about-card,
+.strength-card,
+.recommend-card,
+.faq-item,
+.contact-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-card:hover,
+.strength-card:hover,
+.recommend-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* テキストの可読性向上 */
+p, li {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ローディングインジケーター（画像用） */
+img {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+img[src] {
+    background: none;
+    animation: none;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* スクロールバーのカスタマイズ */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 6px;
+    border: 2px solid var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+}
+
+/* タッチデバイス用の改善 */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .nav-link,
+    .faq-question {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .about-card:hover,
+    .strength-card:hover,
+    .recommend-card:hover {
+        transform: none;
+    }
+}
+
+/* レスポンシブ画像 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* セクション間のスムーズな遷移 */
+.section {
+    opacity: 0;
+    animation: sectionFadeIn 0.8s ease forwards;
+}
+
+@keyframes sectionFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* プリロード最適化 */
+.hero,
+.section-about {
+    animation-delay: 0s;
+}
+
+.section-strengths {
+    animation-delay: 0.1s;
+}
+
+.section-staff {
+    animation-delay: 0.2s;
+}
+
+.section-flow {
+    animation-delay: 0.3s;
+}
+
+/* アクセシビリティ：リンクの視認性向上 */
+a {
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+a:hover::after,
+a:focus::after {
+    width: 100%;
+}
+
+.btn::after {
+    display: none;
+}
+
+/* 高コントラストモード対応 */
+@media (prefers-contrast: high) {
+    :root {
+        --text-color: #000000;
+        --text-light: #333333;
+        --primary-color: #FFD700;
+        --accent-color: #FF4500;
+    }
+}
+
+/* ダークモード対応（システム設定に応じる） */
+@media (prefers-color-scheme: dark) {
+    .about-card,
+    .strength-card,
+    .recommend-card,
+    .contact-item {
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+/* モーション削減設定への対応 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
