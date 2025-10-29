@@ -167,6 +167,34 @@
                         <p class="strength-highlight">
                             視覚的なグラフや図表を使用し、誰が見てもわかりやすい内容になっています。
                         </p>
+                        
+                        <!-- ガイドブック表紙プレビュー -->
+                        <div class="guidebook-preview">
+                            <h4 class="guidebook-preview-title">📘 就労ガイドブックのサンプル</h4>
+                            <p class="guidebook-preview-description">ご本人様向けと事業所向けの2種類のガイドブックをご用意しています。クリックすると拡大表示されます。</p>
+                            <div class="guidebook-covers">
+                                <div class="guidebook-item">
+                                    <div class="guidebook-cover" data-guidebook="personal">
+                                        <img src="images/guidebook-personal-cover.jpg" alt="就労ガイドブック（ご本人様向け）表紙" class="guidebook-cover-img">
+                                        <div class="guidebook-overlay">
+                                            <span class="guidebook-zoom-icon">🔍</span>
+                                            <p class="guidebook-zoom-text">クリックで拡大</p>
+                                        </div>
+                                    </div>
+                                    <p class="guidebook-label">ご本人様向け</p>
+                                </div>
+                                <div class="guidebook-item">
+                                    <div class="guidebook-cover" data-guidebook="organization">
+                                        <img src="images/guidebook-organization-cover.jpg" alt="就労ガイドブック（事業所向け）表紙" class="guidebook-cover-img">
+                                        <div class="guidebook-overlay">
+                                            <span class="guidebook-zoom-icon">🔍</span>
+                                            <p class="guidebook-zoom-text">クリックで拡大</p>
+                                        </div>
+                                    </div>
+                                    <p class="guidebook-label">事業所向け</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -554,6 +582,18 @@
             </div>
         </div>
     </section>
+
+    <!-- ライトボックス（ガイドブック拡大表示用） -->
+    <div class="lightbox" id="guidebookLightbox">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="閉じる">&times;</button>
+            <div class="lightbox-image-container">
+                <img src="" alt="就労ガイドブック表紙" class="lightbox-image" id="lightboxImage">
+            </div>
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
 
     <!-- フッター -->
     <footer class="footer">

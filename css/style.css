@@ -1607,6 +1607,274 @@ a:focus::after {
     }
 }
 
+/* ==========================================
+   就労ガイドブック表紙プレビュー
+========================================== */
+.guidebook-preview {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #FFFBF0 0%, #FFF8E1 100%);
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+}
+
+.guidebook-preview-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.guidebook-preview-description {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+.guidebook-covers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.guidebook-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guidebook-cover {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 210 / 297; /* A4縦比率 */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-white);
+}
+
+.guidebook-cover:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.guidebook-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.guidebook-cover:hover .guidebook-cover-img {
+    transform: scale(1.05);
+}
+
+.guidebook-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.guidebook-cover:hover .guidebook-overlay {
+    opacity: 1;
+}
+
+.guidebook-zoom-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.guidebook-zoom-text {
+    color: var(--bg-white);
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.guidebook-label {
+    margin-top: var(--spacing-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* ==========================================
+   ライトボックス（拡大表示モーダル）
+========================================== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10001;
+    animation: lightboxZoomIn 0.3s ease;
+}
+
+@keyframes lightboxZoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--bg-white);
+    font-size: 3rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: all 0.3s ease;
+    z-index: 10002;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: var(--primary-color);
+}
+
+.lightbox-image-container {
+    max-width: 100%;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-white);
+    border-radius: 8px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.lightbox-caption {
+    margin-top: var(--spacing-md);
+    color: var(--bg-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* レスポンシブ対応：ガイドブックプレビュー */
+@media (max-width: 768px) {
+    .guidebook-preview {
+        padding: var(--spacing-md);
+    }
+    
+    .guidebook-preview-title {
+        font-size: 1.3rem;
+    }
+    
+    .guidebook-covers {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .guidebook-cover {
+        max-width: 250px;
+    }
+    
+    .lightbox-close {
+        top: -40px;
+        font-size: 2.5rem;
+    }
+    
+    .lightbox-image-container {
+        max-height: 80vh;
+    }
+    
+    .lightbox-image {
+        max-height: 80vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .guidebook-preview-title {
+        font-size: 1.1rem;
+    }
+    
+    .guidebook-preview-description {
+        font-size: 0.9rem;
+    }
+    
+    .guidebook-cover {
+        max-width: 200px;
+    }
+    
+    .guidebook-zoom-icon {
+        font-size: 2.5rem;
+    }
+    
+    .guidebook-zoom-text {
+        font-size: 0.9rem;
+    }
+}
+
 /* ダークモード対応（システム設定に応じる） */
 @media (prefers-color-scheme: dark) {
     .about-card,
