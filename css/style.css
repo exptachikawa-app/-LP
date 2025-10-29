@@ -1648,9 +1648,9 @@ a:focus::after {
 
 .guidebook-covers {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-md);
-    max-width: 550px;
+    max-width: 750px;
     margin: 0 auto;
     margin-bottom: var(--spacing-lg);
 }
@@ -1849,7 +1849,7 @@ a:focus::after {
     }
     
     .guidebook-cover {
-        max-width: 130px;
+        max-width: 150px;
     }
     
     .lightbox-close {
