@@ -211,6 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // スムーズスクロールのための現在位置追跡
     updateActiveNavLink();
+    
+    // ガイドブックライトボックス機能の初期化
+    initGuidebookLightbox();
 });
 
 // ==========================================
@@ -252,64 +255,71 @@ document.querySelectorAll('a[target="_blank"]').forEach(link => {
 // ==========================================
 // 就労ガイドブック ライトボックス機能
 // ==========================================
-const lightbox = document.getElementById('guidebookLightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-const lightboxCaption = document.getElementById('lightboxCaption');
-const lightboxClose = document.querySelector('.lightbox-close');
-const lightboxOverlay = document.querySelector('.lightbox-overlay');
-
-// ガイドブック表紙のクリックイベント
-const guidebookCovers = document.querySelectorAll('.guidebook-cover');
-guidebookCovers.forEach(cover => {
-    cover.addEventListener('click', () => {
-        const imgElement = cover.querySelector('.guidebook-cover-img');
-        const imgSrc = imgElement.getAttribute('src');
-        const imgAlt = imgElement.getAttribute('alt');
-        const guidebookType = cover.getAttribute('data-guidebook');
-        
-        // ライトボックスに画像とキャプションをセット
-        lightboxImage.setAttribute('src', imgSrc);
-        lightboxImage.setAttribute('alt', imgAlt);
-        
-        // キャプションを設定
-        if (guidebookType === 'personal') {
-            lightboxCaption.textContent = '就労ガイドブック（ご本人様向け）';
-        } else if (guidebookType === 'organization') {
-            lightboxCaption.textContent = '就労ガイドブック（事業所向け）';
-        }
-        
-        // ライトボックスを表示
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // スクロール防止
-    });
-});
-
-// ライトボックスを閉じる関数
-const closeLightbox = () => {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = ''; // スクロール復元
-};
-
-// 閉じるボタンのクリックイベント
-if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-}
-
-// オーバーレイのクリックイベント
-if (lightboxOverlay) {
-    lightboxOverlay.addEventListener('click', closeLightbox);
-}
-
-// ESCキーでライトボックスを閉じる
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        closeLightbox();
+function initGuidebookLightbox() {
+    const lightbox = document.getElementById('guidebookLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxOverlay = document.querySelector('.lightbox-overlay');
+    
+    // 要素が存在しない場合は処理を中断
+    if (!lightbox || !lightboxImage || !lightboxCaption) {
+        return;
     }
-});
 
-// ライトボックス内の画像クリックでも閉じないようにする
-if (lightboxImage) {
-    lightboxImage.addEventListener('click', (e) => {
-        e.stopPropagation();
+    // ライトボックスを閉じる関数
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // スクロール復元
+    };
+
+    // ガイドブック表紙のクリックイベント
+    const guidebookCovers = document.querySelectorAll('.guidebook-cover');
+    guidebookCovers.forEach(cover => {
+        cover.addEventListener('click', () => {
+            const imgElement = cover.querySelector('.guidebook-cover-img');
+            const imgSrc = imgElement.getAttribute('src');
+            const imgAlt = imgElement.getAttribute('alt');
+            const guidebookType = cover.getAttribute('data-guidebook');
+            
+            // ライトボックスに画像とキャプションをセット
+            lightboxImage.setAttribute('src', imgSrc);
+            lightboxImage.setAttribute('alt', imgAlt || '就労ガイドブック');
+            
+            // キャプションを設定
+            if (guidebookType === 'personal') {
+                lightboxCaption.textContent = '就労ガイドブック（ご本人様向け）';
+            } else if (guidebookType === 'organization') {
+                lightboxCaption.textContent = '就労ガイドブック（事業所向け）';
+            }
+            
+            // ライトボックスを表示
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // スクロール防止
+        });
     });
+
+    // 閉じるボタンのクリックイベント
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    // オーバーレイのクリックイベント
+    if (lightboxOverlay) {
+        lightboxOverlay.addEventListener('click', closeLightbox);
+    }
+
+    // ESCキーでライトボックスを閉じる
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+
+    // ライトボックス内の画像クリックでも閉じないようにする
+    if (lightboxImage) {
+        lightboxImage.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
 }

@@ -1636,9 +1636,9 @@ a:focus::after {
 
 .guidebook-covers {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-lg);
-    max-width: 700px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -1651,7 +1651,7 @@ a:focus::after {
 .guidebook-cover {
     position: relative;
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
     aspect-ratio: 210 / 297; /* A4縦比率 */
     border-radius: 8px;
     overflow: hidden;
@@ -1836,7 +1836,7 @@ a:focus::after {
     }
     
     .guidebook-cover {
-        max-width: 250px;
+        max-width: 180px;
     }
     
     .lightbox-close {
@@ -1863,7 +1863,7 @@ a:focus::after {
     }
     
     .guidebook-cover {
-        max-width: 200px;
+        max-width: 150px;
     }
     
     .guidebook-zoom-icon {
