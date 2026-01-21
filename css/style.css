@@ -1933,3 +1933,140 @@ a:focus::after {
         transition-duration: 0.01ms !important;
     }
 }
+/* ==========================================
+   資料ダウンロード
+========================================== */
+.section-download {
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+}
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.download-card {
+    background: var(--bg-white);
+    padding: var(--spacing-lg);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.download-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px var(--shadow-medium);
+}
+
+.download-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.download-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.download-description {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+}
+
+.download-info {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.download-size,
+.download-pages {
+    background: var(--bg-light);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.download-btn {
+    width: 100%;
+    max-width: 250px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+.download-btn::before {
+    content: '⬇';
+    font-size: 1.2rem;
+}
+
+.download-note {
+    background: linear-gradient(135deg, rgba(255, 237, 0, 0.1) 0%, rgba(255, 167, 38, 0.1) 100%);
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.download-note p {
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.download-note ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.download-note li {
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    color: var(--text-light);
+    position: relative;
+}
+
+.download-note li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: 900;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .download-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-card {
+        padding: var(--spacing-md);
+    }
+    
+    .download-title {
+        font-size: 1.1rem;
+    }
+    
+    .download-description {
+        font-size: 0.9rem;
+    }
+}
