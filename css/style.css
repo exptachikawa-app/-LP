@@ -506,8 +506,79 @@ body {
 }
 
 /* ==========================================
+   YouTube動画埋め込みスタイル
+========================================== */
+.youtube-wrapper {
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+}
+
+.youtube-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 56.25%; /* 16:9 アスペクト比 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px var(--shadow-medium);
+    background: var(--bg-light);
+}
+
+.youtube-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.youtube-caption {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .youtube-wrapper {
+        padding: 0;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .youtube-container {
+        border-radius: 12px;
+        box-shadow: 0 4px 20px var(--shadow-light);
+    }
+    
+    .youtube-caption {
+        font-size: 0.9rem;
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .youtube-container {
+        border-radius: 8px;
+    }
+    
+    .youtube-caption {
+        font-size: 0.85rem;
+    }
+}
+
+/* ==========================================
    就労選択支援とは
 ========================================== */
+.section-about {
+    background: #fff;
+}
+
 .about-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2002,122 +2073,3 @@ img[src] {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    border-radius: 6px;
-    border: 2px solid var(--bg-light);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--secondary-color) 0%, var(--accent-color) 100%);
-}
-
-/* タッチデバイス用の改善 */
-@media (hover: none) and (pointer: coarse) {
-    .btn,
-    .nav-link,
-    .faq-question {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .about-card:hover,
-    .strength-card:hover,
-    .recommend-card:hover {
-        transform: none;
-    }
-}
-
-/* レスポンシブ画像 */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* セクション間のスムーズな遷移 */
-.section {
-    opacity: 0;
-    animation: sectionFadeIn 0.8s ease forwards;
-}
-
-@keyframes sectionFadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-/* プリロード最適化 */
-.hero,
-.section-about {
-    animation-delay: 0s;
-}
-
-.section-strengths {
-    animation-delay: 0.1s;
-}
-
-.section-staff {
-    animation-delay: 0.2s;
-}
-
-.section-flow {
-    animation-delay: 0.3s;
-}
-
-/* アクセシビリティ：リンクの視認性向上 */
-a {
-    position: relative;
-}
-
-a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-color);
-    transition: width 0.3s ease;
-}
-
-a:hover::after,
-a:focus::after {
-    width: 100%;
-}
-
-.btn::after {
-    display: none;
-}
-
-/* 高コントラストモード対応 */
-@media (prefers-contrast: high) {
-    :root {
-        --text-color: #000000;
-        --text-light: #333333;
-        --primary-color: #FFD700;
-        --accent-color: #FF4500;
-    }
-}
-
-/* ダークモード対応（システム設定に応じる） */
-@media (prefers-color-scheme: dark) {
-    .about-card,
-    .strength-card,
-    .recommend-card,
-    .contact-item {
-        background: rgba(255, 255, 255, 0.95);
-    }
-}
-
-/* モーション削減設定への対応 */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
