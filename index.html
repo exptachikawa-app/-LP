@@ -32,7 +32,7 @@
     <!-- Base URL for GitHub Pages subpath -->
     <base href="https://exptachikawa-app.github.io/-LP/">
     
-    <link rel="stylesheet" href="css/style.css?v=2.5">
+    <link rel="stylesheet" href="css/style.css?v=2.6">
 </head>
 <body>
     <!-- ヘッダー -->
@@ -92,6 +92,22 @@
     <section class="section section-about" id="about">
         <div class="container">
             <h2 class="section-title">就労選択支援とは</h2>
+            
+            <!-- YouTube動画埋め込み -->
+            <div class="youtube-wrapper">
+                <div class="youtube-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/NLrU5DHhMjs" 
+                        title="EXP立川 就労選択支援 紹介動画" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="youtube-caption">📺 EXP立川の就労選択支援について、動画でわかりやすくご紹介しています</p>
+            </div>
+            
             <p class="section-lead">
                 令和7年10月に創設された新しい障害福祉サービスです。<br>
                 EXP立川では、2026年1月より支援を開始しています。<br>
@@ -944,6 +960,20 @@
             });
         });
 
+        // YouTube動画の再生を追跡
+        var youtubeIframe = document.querySelector('.youtube-container iframe');
+        if (youtubeIframe) {
+            youtubeIframe.addEventListener('load', function() {
+                gtag('event', 'video_view', {
+                    'event_category': 'YouTube動画',
+                    'event_label': 'EXP立川 就労選択支援 紹介動画',
+                    'value': 1
+                });
+                
+                console.log('GA4 Event: video_view - EXP立川 就労選択支援 紹介動画');
+            });
+        }
+
         // スクロール深度の追跡（25%, 50%, 75%, 100%）
         var scrollDepths = [25, 50, 75, 100];
         var scrollTracked = [];
@@ -970,6 +1000,6 @@
     });
     </script>
 
-    <script src="js/script.js?v=2.5"></script>
+    <script src="js/script.js?v=2.6"></script>
 </body>
 </html>
