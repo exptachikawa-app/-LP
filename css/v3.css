@@ -2370,6 +2370,105 @@ blockquote {
         grid-template-columns: 1fr;
     }
 }
+/* ==========================================
+   Schedule (新規)
+========================================== */
+.v3-section--schedule {
+    background: var(--bg);
+}
+
+.v3-schedule__layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.v3-schedule__list {
+    border-top: 1px solid var(--border);
+}
+
+.v3-schedule__item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+}
+
+.v3-schedule__day {
+    font-family: var(--en);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    padding-top: 0.25rem;
+}
+
+.v3-schedule__content h3 {
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+}
+
+.v3-schedule__content p {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.v3-schedule__visual {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin: 0;
+}
+
+.v3-schedule__visual img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+}
+
+.v3-schedule__visual figcaption {
+    font-size: 0.8125rem;
+    color: var(--text-light);
+    text-align: center;
+    padding: 0.875rem 1rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 960px) {
+    .v3-schedule__layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .v3-schedule__visual {
+        position: static;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .v3-schedule__item {
+        grid-template-columns: 80px 1fr;
+        gap: 1rem;
+        padding: 1.25rem 0;
+    }
+    .v3-schedule__day {
+        font-size: 0.8125rem;
+    }
+}
 
 /* ==========================================
    Selection
