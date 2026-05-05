@@ -2365,12 +2365,17 @@ blockquote {
 
 .v3-schedule__layout {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-areas:
+        "list visual"
+        "note visual";
+    grid-template-rows: auto 1fr;
+    gap: 1.5rem 4rem;
     align-items: start;
 }
 
 .v3-schedule__list {
+    grid-area: list;
     border-top: 1px solid var(--border);
 }
 
@@ -2407,13 +2412,28 @@ blockquote {
     color: var(--text-muted);
 }
 
+.v3-schedule__note {
+    grid-area: note;
+    margin: 0;
+    padding: 1rem 1.25rem;
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--accent-deep);
+    letter-spacing: 0.02em;
+}
+
 .v3-schedule__visual {
+    grid-area: visual;
     position: sticky;
     top: calc(var(--header-h) + 2rem);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     margin: 0;
+    background: var(--surface);
 }
 
 .v3-schedule__visual img {
@@ -2437,12 +2457,18 @@ blockquote {
 @media (max-width: 960px) {
     .v3-schedule__layout {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        grid-template-areas:
+            "list"
+            "note"
+            "visual";
+        grid-template-rows: auto;
+        gap: 1.5rem;
     }
     .v3-schedule__visual {
         position: static;
         max-width: 560px;
-        margin: 0 auto;
+        margin: 1rem auto 0;
+        width: 100%;
     }
 }
 
@@ -2456,26 +2482,6 @@ blockquote {
         font-size: 0.8125rem;
     }
 }
-
-.v3-schedule__note {
-    grid-column: 1 / 2;
-    margin-top: 1.25rem;
-    padding: 1rem 1.25rem;
-    background: var(--accent-soft);
-    border-left: 2px solid var(--accent);
-    border-radius: 0 4px 4px 0;
-    font-size: 0.8125rem;
-    line-height: 1.7;
-    color: var(--accent-deep);
-    letter-spacing: 0.02em;
-}
-
-@media (max-width: 960px) {
-    .v3-schedule__note {
-        grid-column: 1;
-    }
-}
-
 /* ==========================================
    Case Study (新規)
 ========================================== */
