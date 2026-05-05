@@ -27,66 +27,133 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Base URL for GitHub Pages subpath -->
     <base href="https://exptachikawa-app.github.io/-LP/">
     
     <link rel="stylesheet" href="css/style.css?v=2.6">
+    <link rel="stylesheet" href="css/style-v3.css?v=3.0">
 </head>
 <body>
-    <!-- ヘッダー -->
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <a href="#top">
-                        <img src="images/exp-logo.png" alt="EXP立川ロゴ" class="logo-img" style="height: 50px !important; width: auto !important; max-width: 200px !important; object-fit: contain !important;">
-                    </a>
-                </div>
-                <nav class="nav" id="nav">
-                    <ul class="nav-list">
-                        <li><a href="#about" class="nav-link">就労選択支援とは</a></li>
-                        <li><a href="#strengths" class="nav-link">私たちの強み</a></li>
-                        <li><a href="#staff" class="nav-link">支援員紹介</a></li>
-                        <li><a href="#flow" class="nav-link">ご利用の流れ</a></li>
-                        <li><a href="#faq" class="nav-link">よくある質問</a></li>
-                        <li><a href="#download" class="nav-link">資料ダウンロード</a></li>
-                        <li><a href="#contact" class="nav-link nav-link-cta">お問い合わせ</a></li>
-                    </ul>
-                </nav>
-                <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+    </a>
+<!-- ============================================
+     ヘッダー（新デザイン v3）
+============================================ -->
+<header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+        <a href="#top" class="site-header__logo">
+            <img src="images/exp-logo.png" alt="EXP立川">
+        </a>
+        
+        <nav class="site-nav" id="siteNav">
+            <ul class="site-nav__list">
+                <li><a href="#about" class="nav-link">就労選択支援とは</a></li>
+                <li><a href="#strengths" class="nav-link">私たちの強み</a></li>
+                <li><a href="#staff" class="nav-link">支援員紹介</a></li>
+                <li><a href="#flow" class="nav-link">ご利用の流れ</a></li>
+                <li><a href="#faq" class="nav-link">よくある質問</a></li>
+                <li><a href="#download" class="nav-link">資料</a></li>
+            </ul>
+        </nav>
+        
+        <a href="#contact" class="btn-cta-header nav-link-cta">
+            <span>無料相談</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+        </a>
+        
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
 
-    <!-- ヒーローセクション -->
-    <section class="hero" id="top">
-        <div class="hero-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    自分に合った働き方を、<br>プロと一緒に見つける<span class="highlight">短期集中サポート</span>
-                </h1>
-                <p class="hero-subtitle">立川市の新しい就労選択支援事業所</p>
-                <p class="hero-description">
-                    公認心理師による心理面談とEXP立川独自の就労ガイドブックで、<br class="pc-only">
-                    あなたに合わせた期間で、あなたらしい働き方を一緒に見つけます。
-                </p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary">サービス詳細を見る</a>
-                    <a href="#contact" class="btn btn-secondary">お問い合わせ</a>
+    <!-- ============================================
+     ヒーローセクション（新デザイン v3）
+============================================ -->
+<section class="hero" id="top">
+    <div class="hero__container">
+        
+        <!-- 左：テキストエリア -->
+        <div class="hero__content">
+            
+            <div class="hero__eyebrow">
+                <span class="hero__eyebrow-num">01</span>
+                <span class="hero__eyebrow-line"></span>
+                <span class="hero__eyebrow-text">CAREER CHOICE SUPPORT</span>
+            </div>
+            
+            <h1 class="hero__title">
+                自分に合った働き方を、<br>
+                <em>プロと見つける。</em>
+            </h1>
+            
+            <div class="hero__divider"></div>
+            
+            <p class="hero__lead">
+                立川市の新しい就労選択支援事業所。<br>
+                公認心理師による心理面談と独自の就労ガイドブックで、<br class="pc-only">
+                あなたらしい働き方を一緒に見つけます。
+            </p>
+            
+            <div class="hero__actions">
+                <a href="#contact" class="btn btn--primary">
+                    <span>無料で相談する</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M13 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#about" class="btn btn--ghost">
+                    <span>サービスを見る</span>
+                </a>
+            </div>
+            
+            <div class="hero__meta">
+                <div class="hero__meta-item">
+                    <span class="hero__meta-label">制度創設</span>
+                    <span class="hero__meta-value">令和7年10月</span>
                 </div>
-                <div class="hero-info">
-                    <p class="hero-info-text">令和7年10月創設の新制度 | EXP立川は2026年1月より支援開始</p>
+                <div class="hero__meta-divider"></div>
+                <div class="hero__meta-item">
+                    <span class="hero__meta-label">EXP立川 支援開始</span>
+                    <span class="hero__meta-value">2026年1月</span>
+                </div>
+                <div class="hero__meta-divider"></div>
+                <div class="hero__meta-item">
+                    <span class="hero__meta-label">所在地</span>
+                    <span class="hero__meta-value">JR立川駅 徒歩5分</span>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <!-- 右：ビジュアルエリア -->
+        <div class="hero__visual">
+            <div class="hero__visual-frame">
+                <img 
+                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&q=80" 
+                    alt="" 
+                    class="hero__visual-img"
+                    loading="eager">
+                
+                <div class="hero__visual-tag">
+                    <span class="hero__visual-tag-en">PHILOSOPHY</span>
+                    <span class="hero__visual-tag-jp">「選択の主体は本人」</span>
+                </div>
+            </div>
+            
+            <div class="hero__visual-accent" aria-hidden="true"></div>
+        </div>
+        
+    </div>
+    
+    <div class="hero__scroll" aria-hidden="true">
+        <span class="hero__scroll-text">SCROLL</span>
+        <span class="hero__scroll-line"></span>
+    </div>
+</section>
 
     <!-- 就労選択支援とは -->
     <section class="section section-about" id="about">
@@ -1001,5 +1068,6 @@
     </script>
 
     <script src="js/script.js?v=2.6"></script>
+    <script src="js/script-v3.js?v=3.0" defer></script>
 </body>
 </html>
