@@ -201,6 +201,8 @@
             '.v3-strength, ' +
             '.v3-staff, ' +
             '.v3-flow__item, ' +
+            '.v3-schedule__item, ' +
+            '.v3-case__card, ' +
             '.v3-recommend__card, ' +
             '.v3-faq__item, ' +
             '.v3-download__card, ' +
