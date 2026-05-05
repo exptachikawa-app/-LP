@@ -1,20 +1,48 @@
 /* ==========================================
-   既存ヘッダーの打ち消し（v3用）
+   v3 完全分離リセット（最優先）
+   既存style.cssの干渉を完全に排除
 ========================================== */
-.header { display: none !important; }
 
-/* 既存の .hero スタイルをリセット */
-.hero {
-    position: relative !important;
-    background: var(--color-bg) !important;
-    margin-top: 0 !important;
+/* 既存ヘッダーを完全非表示 */
+.header,
+header.header {
+    display: none !important;
 }
-.hero-bg { display: none !important; }
 
-/* body の上部余白調整 */
+/* 既存ヒーローの装飾を無効化 */
+.hero-bg {
+    display: none !important;
+}
+
+/* 既存img のローディングアニメ・背景を無効化 */
+.site-header img,
+.hero img {
+    background: none !important;
+    animation: none !important;
+}
+
+/* 新ヘッダー・ヒーロー内では既存.containerの影響を排除 */
+.site-header .site-header__inner,
+.hero .hero__container {
+    max-width: none;
+}
+
+/* body の上部余白を新ヘッダー分確保 */
 body {
     padding-top: 0 !important;
+    margin: 0 !important;
 }
+
+/* ==========================================
+   ここから下は前回提示したCSS（変更なし）
+========================================== */
+
+:root {
+    /* Colors */
+    --color-bg:           #FCFBF8;
+    /* ... 以下、前回提示のCSS全文 ... */
+}
+
 /* ==========================================
    リセットとベーススタイル
 ========================================== */
