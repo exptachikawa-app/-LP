@@ -2474,6 +2474,26 @@ blockquote {
         font-size: 0.8125rem;
     }
 }
+
+.v3-schedule__note {
+    grid-column: 1 / 2;
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--accent-deep);
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 960px) {
+    .v3-schedule__note {
+        grid-column: 1;
+    }
+}
+
 /* ==========================================
    Case Study (新規)
 ========================================== */
