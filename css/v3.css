@@ -2561,6 +2561,31 @@ blockquote {
     margin-bottom: 1.5rem;
 }
 
+.v3-case__avatar {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1.25rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border: 1px solid var(--border);
+    transition: transform 0.4s var(--ease-out);
+}
+
+.v3-case__card:hover .v3-case__avatar {
+    transform: scale(1.05);
+}
+
+.v3-case__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
 .v3-case__num {
     font-family: var(--en);
     font-size: 0.75rem;
