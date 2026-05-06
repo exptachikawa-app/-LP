@@ -2562,16 +2562,12 @@ blockquote {
 }
 
 .v3-case__avatar {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 1.25rem;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--accent-soft);
+    width: 110px;
+    height: 110px;
+    margin: 0.5rem auto 1.5rem;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-    border: 1px solid var(--border);
     transition: transform 0.4s var(--ease-out);
 }
 
@@ -2582,8 +2578,8 @@ blockquote {
 .v3-case__avatar img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain;
+    display: block;
 }
 
 .v3-case__num {
