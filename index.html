@@ -156,18 +156,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 9. YouTube動画iframeのロードを追跡
-    var youtubeIframe = document.querySelector('.v3-about__youtube-frame iframe');
-    if (youtubeIframe) {
-        youtubeIframe.addEventListener('load', function() {
+        // YouTube動画iframe(About動画 + ガイドブック解説動画)のロード追跡
+    document.querySelectorAll('.v3-about__youtube-frame iframe, .v3-video-service__frame iframe').forEach(function(iframe) {
+        iframe.addEventListener('load', function() {
+            var label = this.getAttribute('title') || 'YouTube動画';
             gtag('event', 'video_view', {
                 'event_category': 'YouTube動画',
-                'event_label': 'EXP立川 就労選択支援 紹介動画',
+                'event_label': label,
                 'value': 1
             });
-            console.log('GA4: video_view - EXP立川 就労選択支援 紹介動画');
+            console.log('GA4: video_view - ' + label);
         });
-    }
+    });
 
     // 10. スクロール深度の追跡（25%, 50%, 75%, 100%）
     var scrollDepths = [25, 50, 75, 100];
