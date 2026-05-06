@@ -2803,3 +2803,62 @@ blockquote {
     background: var(--accent);
     color: var(--primary);
 }
+/* ==========================================
+   Strength 03 - Media & Tools 修正版
+========================================== */
+
+/* メディア（写真+動画）グリッド：親の overflow:hidden 等を強制上書き */
+.v3-strength__visual.v3-strength__visual--media {
+    display: grid !important;
+    grid-template-rows: 1fr 1fr !important;
+    gap: 0.75rem !important;
+    aspect-ratio: 4 / 5 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+}
+
+/* 親の .v3-strength__visual img ルールを上書き */
+.v3-strength__visual--media .v3-strength__visual-photo,
+.v3-strength__visual--media .v3-strength__visual-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    box-shadow: 0 12px 40px rgba(44, 42, 38, 0.08) !important;
+    display: block !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+.v3-strength__visual--media .v3-strength__visual-video {
+    background: #000 !important;
+}
+
+/* ホバー時の拡大も無効化（動画があるので不自然になるため） */
+.v3-strength__visual--media:hover .v3-strength__visual-photo,
+.v3-strength__visual--media:hover .v3-strength__visual-video {
+    transform: none !important;
+}
+
+@media (max-width: 960px) {
+    .v3-strength__visual.v3-strength__visual--media {
+        grid-template-rows: auto auto !important;
+        aspect-ratio: auto !important;
+        max-width: 560px !important;
+        margin: 0 auto;
+    }
+    .v3-strength__visual--media .v3-strength__visual-photo,
+    .v3-strength__visual--media .v3-strength__visual-video {
+        aspect-ratio: 4 / 3 !important;
+        height: auto !important;
+    }
+}
+
+/* TOOL カード視認性向上（背景の差別化） */
+.v3-section--strengths .v3-tools__item {
+    background: #FFFFFF !important;
+    border: 1px solid #EDE8DD !important;
+    border-left: 3px solid #C8954A !important;
+}
