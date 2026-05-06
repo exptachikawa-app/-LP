@@ -3142,3 +3142,156 @@ blockquote {
     .v3-hero__visual { display: none; }
     .v3-hero__scroll { display: none; }
 }
+/* ==========================================
+   Video Service (Strength 02 拡張)
+========================================== */
+.v3-video-service {
+    margin-top: 2.5rem;
+    padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+}
+
+.v3-video-service::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent) 0%, var(--accent-deep) 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+.v3-video-service__head {
+    margin-bottom: 1.5rem;
+}
+
+.v3-video-service__label {
+    display: inline-block;
+    font-family: var(--en);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.v3-video-service__title {
+    font-family: var(--serif);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.5;
+    margin-bottom: 0.875rem;
+    letter-spacing: 0.01em;
+}
+
+.v3-video-service__title em {
+    font-style: normal;
+    color: var(--accent-deep);
+}
+
+.v3-video-service__lead {
+    font-size: 0.9375rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+}
+
+.v3-video-service__frame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: #000;
+    margin-bottom: 0.75rem;
+}
+
+.v3-video-service__frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.v3-video-service__caption {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.75rem;
+}
+
+.v3-video-service__uses {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.v3-video-service__uses-title {
+    font-family: var(--en);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--accent-deep);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.v3-video-service__uses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.v3-video-service__use {
+    padding: 1.25rem 1rem;
+    background: var(--surface-alt);
+    border-radius: 4px;
+    border-left: 2px solid var(--accent);
+}
+
+.v3-video-service__use-num {
+    display: block;
+    font-family: var(--en);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.v3-video-service__use h5 {
+    font-family: var(--serif);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+}
+
+.v3-video-service__use p {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .v3-video-service {
+        margin-top: 2rem;
+        padding: 1.5rem 1.25rem;
+    }
+    .v3-video-service__title { font-size: 1.1875rem; }
+    .v3-video-service__lead { font-size: 0.875rem; }
+    .v3-video-service__uses-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    .v3-video-service__use { padding: 1rem; }
+}
