@@ -242,7 +242,7 @@ blockquote {
     padding: 0 2rem;
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .v3-header__logo {
@@ -265,18 +265,20 @@ blockquote {
 
 .v3-nav__list {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
 .v3-nav__list a {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: 0.02em;
     color: var(--text);
     position: relative;
     padding: 0.5rem 0;
     transition: color 0.3s var(--ease-out);
+    white-space: nowrap;
 }
 
 .v3-nav__list a::after {
