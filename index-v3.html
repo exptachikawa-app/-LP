@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXNJ4KBVGQ"></script>
     <script>
@@ -12,24 +12,187 @@
       gtag('js', new Date());
       gtag('config', 'G-EXNJ4KBVGQ');
     </script>
-    
-    <meta name="description" content="就労選択支援事業所EXP立川は、公認心理師による心理面談と独自の就労ガイドブックで、あなたに合った働き方を見つけます。令和7年10月創設の新制度。EXP立川では2026年1月より支援を開始しており、すぐにご利用いただけます。">
-    <meta name="keywords" content="就労選択支援,EXP立川,立川市,障害福祉,就労支援,心理面談,公認心理師">
-    <title>就労選択支援事業所EXP立川 | 自分に合った働き方を見つける</title>
-    
-    <meta property="og:title" content="就労選択支援事業所EXP立川">
-    <meta property="og:description" content="公認心理師による心理面談と独自の就労ガイドブックで、あなたに合った働き方を見つけます。">
+
+    <!-- SEO -->
+    <title>就労選択支援事業所EXP立川 | あなたの『働きたい』を、一緒に整理する。</title>
+    <meta name="description" content="就労選択支援事業所EXP立川。あなたの『働きたい』を、公認心理師と一緒に整理する。心理面談・独自の就労ガイドブック・オリジナル開発のデジタルアセスメントツールで、あなたらしい働き方を見つけます。立川市・2026年1月支援開始。">
+    <meta name="keywords" content="就労選択支援,EXP立川,立川市,障害福祉,就労支援,心理面談,公認心理師,就労アセスメント">
+    <link rel="canonical" href="https://exptachikawa-app.github.io/-LP/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="就労選択支援事業所EXP立川 | あなたの『働きたい』を、一緒に整理する。">
+    <meta property="og:description" content="公認心理師による心理面談と独自開発のデジタルアセスメントツールで、あなたらしい働き方を一緒に見つけます。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://exptachikawa-app.github.io/-LP/">
-    
-    <!-- Google Fonts -->
+    <meta property="og:image" content="https://exptachikawa-app.github.io/-LP/images/ogp.jpg">
+    <meta property="og:site_name" content="就労選択支援事業所EXP立川">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="就労選択支援事業所EXP立川 | あなたの『働きたい』を、一緒に整理する。">
+    <meta name="twitter:description" content="公認心理師による心理面談と独自開発のデジタルアセスメントツールで、あなたらしい働き方を一緒に見つけます。">
+    <meta name="twitter:image" content="https://exptachikawa-app.github.io/-LP/images/ogp.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- Google Fonts (v3.cssで使用：Noto Sans JP / Shippori Mincho B1 / Noto Serif JP / Manrope / Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <base href="https://exptachikawa-app.github.io/-LP/">
-    
-    <link rel="stylesheet" href="css/v3.css?v=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/v3.css?v=3.0">
+<!-- GA4 カスタムイベントトラッキング -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // 1. PDFダウンロードを追跡（href末尾.pdfで汎用判定）
+    document.querySelectorAll('a[href$=".pdf"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var card = this.closest('.v3-download__card');
+            var resourceName = card && card.querySelector('h3')
+                ? card.querySelector('h3').innerText.replace(/\n/g, ' ').trim()
+                : this.getAttribute('href');
+            gtag('event', 'file_download', {
+                'event_category': '資料ダウンロード',
+                'event_label': resourceName,
+                'value': 1
+            });
+            console.log('GA4: file_download - ' + resourceName);
+        });
+    });
+
+    // 2. お問い合わせ系リンクのクリックを追跡
+    document.querySelectorAll('a[href="#contact"], .v3-cta-btn').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var label = (this.innerText || this.textContent || 'お問い合わせ').trim();
+            gtag('event', 'contact_click', {
+                'event_category': 'お問い合わせ',
+                'event_label': label,
+                'value': 1
+            });
+            console.log('GA4: contact_click - ' + label);
+        });
+    });
+
+    // 3. 電話番号リンクのクリックを追跡
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var phone = this.getAttribute('href').replace('tel:', '');
+            gtag('event', 'phone_call', {
+                'event_category': '電話',
+                'event_label': phone,
+                'value': 1
+            });
+            console.log('GA4: phone_call - ' + phone);
+        });
+    });
+
+    // 4. メールリンクのクリックを追跡
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var email = this.getAttribute('href').replace('mailto:', '');
+            gtag('event', 'email_click', {
+                'event_category': 'メール',
+                'event_label': email,
+                'value': 1
+            });
+            console.log('GA4: email_click - ' + email);
+        });
+    });
+
+    // 5. 外部リンクのクリックを追跡
+    document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var url = this.getAttribute('href');
+            gtag('event', 'outbound_link', {
+                'event_category': '外部リンク',
+                'event_label': url,
+                'value': 1
+            });
+            console.log('GA4: outbound_link - ' + url);
+        });
+    });
+
+    // 6. ナビゲーションリンクのクリックを追跡（v3-nav内のa）
+    document.querySelectorAll('.v3-nav a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var section = (this.innerText || this.textContent || 'Unknown').trim();
+            gtag('event', 'navigation_click', {
+                'event_category': 'ナビゲーション',
+                'event_label': section,
+                'value': 1
+            });
+            console.log('GA4: navigation_click - ' + section);
+        });
+    });
+
+    // 7. FAQクリックを追跡
+    document.querySelectorAll('.v3-faq__q').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var qEl = this.querySelector('.v3-faq__q-text');
+            var question = qEl ? qEl.innerText.trim() : 'Unknown';
+            gtag('event', 'faq_click', {
+                'event_category': 'FAQ',
+                'event_label': question,
+                'value': 1
+            });
+            console.log('GA4: faq_click - ' + question);
+        });
+    });
+
+    // 8. ガイドブック表紙クリックを追跡
+    document.querySelectorAll('.v3-guidebook__cover').forEach(function(cover) {
+        cover.addEventListener('click', function() {
+            var type = this.getAttribute('data-guidebook') || 'Unknown';
+            gtag('event', 'guidebook_preview', {
+                'event_category': 'ガイドブックプレビュー',
+                'event_label': type,
+                'value': 1
+            });
+            console.log('GA4: guidebook_preview - ' + type);
+        });
+    });
+
+    // 9. YouTube動画iframeのロードを追跡
+    var youtubeIframe = document.querySelector('.v3-about__youtube-frame iframe');
+    if (youtubeIframe) {
+        youtubeIframe.addEventListener('load', function() {
+            gtag('event', 'video_view', {
+                'event_category': 'YouTube動画',
+                'event_label': 'EXP立川 就労選択支援 紹介動画',
+                'value': 1
+            });
+            console.log('GA4: video_view - EXP立川 就労選択支援 紹介動画');
+        });
+    }
+
+    // 10. スクロール深度の追跡（25%, 50%, 75%, 100%）
+    var scrollDepths = [25, 50, 75, 100];
+    var scrollTracked = [];
+    window.addEventListener('scroll', function() {
+        var scrollPercentage = Math.round(
+            (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+        );
+        scrollDepths.forEach(function(depth) {
+            if (scrollPercentage >= depth && scrollTracked.indexOf(depth) === -1) {
+                scrollTracked.push(depth);
+                gtag('event', 'scroll_depth', {
+                    'event_category': 'スクロール',
+                    'event_label': depth + '%',
+                    'value': depth
+                });
+                console.log('GA4: scroll_depth - ' + depth + '%');
+            }
+        });
+    });
+
+    console.log('GA4 カスタムイベントトラッキング初期化完了 (v3)');
+});
+</script>
+
 </head>
 <body>
 
