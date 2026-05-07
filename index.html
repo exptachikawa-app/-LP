@@ -1327,6 +1327,40 @@ document.addEventListener('DOMContentLoaded', function() {
     lazyVideos.forEach(function(v) { observer.observe(v); });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.v3-yt-lite').forEach(function(el) {
+        var id = el.getAttribute('data-id');
+        // サムネイル画像をbackgroundに設定
+        el.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + id + '/hqdefault.jpg)';
+        // クリックで本物のiframeに差し替え
+        el.addEventListener('click', function() {
+            if (el.classList.contains('is-loaded')) return;
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('src', 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0');
+            iframe.setAttribute('title', el.getAttribute('data-title') || 'YouTube動画');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.style.position = 'absolute';
+            iframe.style.inset = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            el.appendChild(iframe);
+            el.classList.add('is-loaded');
+            // GA4 video_view 計測
+            if (typeof gtag === 'function') {
+                gtag('event', 'video_view', {
+                    'event_category': 'YouTube動画',
+                    'event_label': el.getAttribute('data-title') || 'YouTube動画',
+                    'value': 1
+                });
+            }
+        });
+    });
+});
+</script>
 
 </body>
 </html>
