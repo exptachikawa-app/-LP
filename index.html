@@ -327,12 +327,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <div class="v3-about__layout">
             <div class="v3-about__visual">
-                <img src="images/photo-assessment.jpg" alt="アセスメントの様子" loading="lazy">
-                <div class="v3-about__visual-badge">
-                    <span class="v3-about__visual-badge-num">2025.10</span>
-                    <span class="v3-about__visual-badge-text">制度創設</span>
-                </div>
-            </div>
+    <picture>
+        <source srcset="images/photo-assessment.webp" type="image/webp">
+        <img src="images/photo-assessment.jpg" alt="アセスメントの様子" loading="lazy" width="800" height="1000">
+    </picture>
+    <div class="v3-about__visual-badge">
+        <span class="v3-about__visual-badge-num">2025.10</span>
+        <span class="v3-about__visual-badge-text">制度創設</span>
+    </div>
+</div>
             
             <div class="v3-about__text">
                 <p class="v3-about__lead">
