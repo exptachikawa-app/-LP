@@ -3279,3 +3279,31 @@ blockquote {
     .v3-section--video-service::after { bottom: 2.5rem; }
     .v3-video-service__use { padding: 1rem; }
 }
+/* YouTube Lite Embed */
+.v3-yt-lite {
+    position: relative;
+    cursor: pointer;
+    background-color: #000;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.v3-yt-lite::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.3), transparent 30%, transparent 70%, rgba(0,0,0,.3));
+}
+.v3-yt-lite__btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+.v3-yt-lite__btn:hover { filter: brightness(1.2); }
+.v3-yt-lite.is-loaded::before,
+.v3-yt-lite.is-loaded .v3-yt-lite__btn { display: none; }
