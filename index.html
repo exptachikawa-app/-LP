@@ -718,12 +718,15 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         
         <div class="v3-staff">
-            <div class="v3-staff__photo">
-                <img src="images/hyodo-staff.jpg" alt="兵働弘一 支援員">
-                <div class="v3-staff__photo-mark">
-                    <span>HEAD<br>SUPPORTER</span>
-                </div>
-            </div>
+           <div class="v3-staff__photo">
+    <picture>
+        <source srcset="images/hyodo-staff.webp" type="image/webp">
+        <img src="images/hyodo-staff.jpg" alt="兵働弘一 支援員" loading="lazy" width="800" height="1000">
+    </picture>
+    <div class="v3-staff__photo-mark">
+        <span>HEAD<br>SUPPORTER</span>
+    </div>
+</div>
             <div class="v3-staff__info">
                 <p class="v3-staff__position">主担当支援員</p>
                 <h3 class="v3-staff__name">
