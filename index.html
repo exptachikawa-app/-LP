@@ -515,14 +515,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     </figcaption>
                 </figure>
                 <figure class="v3-media-card v3-media-card--video">
-                    <video autoplay muted loop playsinline preload="metadata" poster="images/photo-assessment-app.jpg">
-                        <source src="images/video-work-simulation.mp4" type="video/mp4">
-                    </video>
-                    <figcaption>
-                        <span class="v3-media-card__tag">TOOL 01</span>
-                        <span class="v3-media-card__caption">就労支援アセスメントシステム（画面）</span>
-                    </figcaption>
-                </figure>
+    <video muted loop playsinline preload="none"
+           poster="images/photo-assessment-app.jpg"
+           data-src="images/video-work-simulation.mp4">
+    </video>
+    <figcaption>
+        <span class="v3-media-card__tag">TOOL 01</span>
+        <span class="v3-media-card__caption">就労支援アセスメントシステム(画面)</span>
+    </figcaption>
+</figure>
                 <figure class="v3-media-card v3-media-card--screen">
                     <img src="images/photo-work-simulation-screen.jpg" alt="模擬就労体験システムの画面（名刺データ入力タスク）" loading="lazy">
                     <figcaption>
@@ -1301,6 +1302,38 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+</script>
+<script>
+// 画面に入ったら動画を読み込んで自動再生
+document.addEventListener('DOMContentLoaded', function() {
+    var lazyVideos = document.querySelectorAll('video[data-src]');
+    if (!('IntersectionObserver' in window)) {
+        // フォールバック：即時読み込み
+        lazyVideos.forEach(function(v) {
+            var src = document.createElement('source');
+            src.src = v.getAttribute('data-src');
+            src.type = 'video/mp4';
+            v.appendChild(src);
+            v.load(); v.play();
+        });
+        return;
+    }
+    var observer = new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var v = entry.target;
+                var src = document.createElement('source');
+                src.src = v.getAttribute('data-src');
+                src.type = 'video/mp4';
+                v.appendChild(src);
+                v.load();
+                v.play().catch(function(){});
+                obs.unobserve(v);
+            }
+        });
+    }, { rootMargin: '200px' });
+    lazyVideos.forEach(function(v) { observer.observe(v); });
 });
 </script>
 
