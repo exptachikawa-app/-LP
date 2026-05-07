@@ -410,8 +410,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Strength 01 -->
         <div class="v3-strength">
             <div class="v3-strength__visual">
-                <img src="images/photo-counseling.jpg" alt="心理面談の様子" loading="lazy">
-            </div>
+    <picture>
+        <source srcset="images/photo-counseling.webp" type="image/webp">
+        <img src="images/photo-counseling.jpg" alt="心理面談の様子" loading="lazy" width="800" height="1000">
+    </picture>
+</div>
             <div class="v3-strength__content">
                 <span class="v3-strength__num">01</span>
                 <h3 class="v3-strength__title">公認心理師による<br><em>専門的な心理面談</em></h3>
